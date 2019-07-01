@@ -1,0 +1,4 @@
+{
+    "mongoURL": "mongodb+srv://chinna:chinna3093@devconnector-c1yuz.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "sriramteja"
+}

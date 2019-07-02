@@ -1,4 +1,6 @@
 {
     "mongoURL": "mongodb+srv://chinna:chinna3093@devconnector-c1yuz.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "sriramteja"
+    "jwtSecret": "sriramteja",
+    "githubClientId": "1b6043eeb5c121cda2a9",
+    "githubSecret": "0b3de06d0b5fdf2d31ff02567d3f04951c3f1c09"
 }

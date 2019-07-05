@@ -7,6 +7,7 @@ const config = require('config');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 // @route   GET api/profile/me
 // @desc    Get Current users profile
@@ -163,6 +164,7 @@ router.delete('/', auth, async (req, res) => {
     }
 
     //delete profile and user
+    await Post.deleteMany({ user: req.user.id });
     await Profile.deleteOne({ _id: profile.id });
     await User.findOneAndRemove({ _id: req.user.id });
     res.status(200).json({ msg: 'successfully deleted profile and user' });
@@ -172,7 +174,7 @@ router.delete('/', auth, async (req, res) => {
 });
 
 // @route   PUT api/profile/experience
-// @desc    deleting a users profile from database
+// @desc    adding experince in profile document
 // @access  private
 router.put(
   '/experience',
@@ -334,7 +336,7 @@ router.get('/github/:username', (req, res) => {
       if (response.statusCode !== 200) {
         return res.status(404).json({ msg: 'No Github profile found' });
       }
-      
+
       res.json(JSON.parse(body));
     });
   } catch (error) {}

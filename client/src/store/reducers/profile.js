@@ -47,10 +47,7 @@ export default function(state = initialState, action) {
         repos: [],
         loading: false
       };
-    case actionTypes.UPDATE_PROFILE:
-      return {
-        ...state
-      };
+
     default:
       return state;
   }

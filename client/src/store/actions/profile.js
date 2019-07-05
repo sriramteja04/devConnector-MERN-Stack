@@ -21,7 +21,7 @@ export const getCurrentProfile = () => async dispatch => {
 };
 
 //Get all profiles.
-export const getAllProfiles = () => async dispatch => {
+export const getProfiles = () => async dispatch => {
   dispatch({
     type: actionTypes.CLEAR_PROFILE
   });

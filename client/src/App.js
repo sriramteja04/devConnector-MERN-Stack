@@ -15,6 +15,7 @@ import Alert from './components/layout/Alert';
 import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
+import Profiles from './components/profiles/Profiles';
 
 import { loadUser } from './store/actions/auth';
 import PrivateRoute from './components/Routing/PrivateRoute';
@@ -41,6 +42,7 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/profiles' component={Profiles} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/create-profile' component={CreateProfile} />
               <PrivateRoute exact path='/edit-profile' component={EditProfile} />
@@ -49,7 +51,7 @@ const App = () => {
             </Switch>
           </section>
         </Fragment>
-      </Router> 
+      </Router>
     </Provider>
   );
 };

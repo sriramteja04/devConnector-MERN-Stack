@@ -43,7 +43,7 @@ export const getProfiles = () => async dispatch => {
 //Get profile by ID.
 export const getProfileById = userID => async dispatch => {
   try {
-    const res = await axios.get(`/api/profile/${userID}`);
+    const res = await axios.get(`/api/profile/user/${userID}`);
 
     dispatch({
       type: actionTypes.GET_PROFILE,
@@ -82,8 +82,12 @@ export const createProfile = (formData, history, edit = false) => async dispatch
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.post('/api/profile/', formData, config);
+    //Checking if the skills is array or not
+    if (typeof formData.skills === 'object') {
+      formData['skills'] = formData.skills.join(',');
+    }
 
+    const res = await axios.post('/api/profile/', formData, config);
     dispatch({
       type: actionTypes.GET_PROFILE,
       payload: res.data
@@ -204,7 +208,7 @@ export const deleteEducation = id => async dispatch => {
 export const deleteAccount = () => async dispatch => {
   if (window.confirm('Are you sure? This can Not be undone!')) {
     try {
-      const res = await axios.delete(`/api/profile`);
+      await axios.delete(`/api/profile`);
 
       dispatch({
         type: actionTypes.CLEAR_PROFILE

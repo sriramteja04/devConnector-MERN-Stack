@@ -98,7 +98,7 @@ router.post(
           { $set: profileFields },
           { new: true }
         );
-        res.json(profile);
+        return res.json(profile);
       }
 
       //Else create a profile and save it to database.

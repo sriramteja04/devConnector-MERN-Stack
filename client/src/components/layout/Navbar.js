@@ -8,6 +8,14 @@ const Navbar = props => {
   const authLinks = (
     <ul>
       <li>
+        <Link to='/profiles'>Developers</Link>
+      </li>
+      <li>
+        <Link to='/posts'>
+          <i className='fas fa-post' /> <span className='hide-sm'>Posts</span>
+        </Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' /> <span className='hide-sm'>Dashboard</span>
         </Link>
@@ -17,9 +25,6 @@ const Navbar = props => {
           {' '}
           <i className='fas fa-sign-out-alt' /> <span className='hide-sm'>Logout</span>
         </Link>
-      </li>
-      <li>
-        <Link to='/profiles'>Developers</Link>
       </li>
     </ul>
   );

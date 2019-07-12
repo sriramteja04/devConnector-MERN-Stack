@@ -18,6 +18,7 @@ export default function(state = initialState, action) {
       };
 
     case actionTypes.GET_POST:
+      
       return {
         ...state,
         post: payload,
@@ -51,6 +52,20 @@ export default function(state = initialState, action) {
       return {
         ...state,
         error: payload,
+        loading: false
+      };
+
+    case actionTypes.ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+        loading: false
+      };
+
+    case actionTypes.DELETE_COMMENT:
+      return {
+        ...state,
+        post: state.post.comments.filter(comment => comment._id !== payload),
         loading: false
       };
 

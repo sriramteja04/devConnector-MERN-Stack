@@ -137,7 +137,7 @@ router.delete('/unlikes/:id', auth, async (req, res) => {
 
     const removeIndex = post.likes.map(like => like.user.toString()).indexOf(req.user.id);
 
-    post.likes.splice(removeIndex, 1); 
+    post.likes.splice(removeIndex, 1);
     await post.save();
     res.json(post.likes);
   } catch (error) {

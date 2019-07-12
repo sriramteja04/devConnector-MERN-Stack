@@ -96,11 +96,54 @@ export const addPost = formData => async dispatch => {
 export const getPost = id => async dispatch => {
   try {
     const res = await axios.get(`/api/posts/${id}`);
-
+    
     dispatch({
       type: actionTypes.GET_POST,
       payload: res.data
     });
+  } catch (err) {
+    dispatch({
+      type: actionTypes.POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const addComment = (postId, formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const res = await axios.post(`/api/posts/comment/${postId}`, formData, config);
+
+    dispatch({
+      type: actionTypes.ADD_COMMENT,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Posted Comment', 'success'));
+  } catch (err) {
+    dispatch({
+      type: actionTypes.POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const deleteComment = (postId, commentId) => async dispatch => {
+  try {
+    
+    await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+
+    dispatch({
+      type: actionTypes.DELETE_COMMENT,
+      payload: commentId
+    });
+
+    dispatch(setAlert('Comment Deleted', 'success'));
   } catch (err) {
     dispatch({
       type: actionTypes.POST_ERROR,

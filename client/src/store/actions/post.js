@@ -96,7 +96,7 @@ export const addPost = formData => async dispatch => {
 export const getPost = id => async dispatch => {
   try {
     const res = await axios.get(`/api/posts/${id}`);
-    
+
     dispatch({
       type: actionTypes.GET_POST,
       payload: res.data
@@ -135,9 +135,8 @@ export const addComment = (postId, formData) => async dispatch => {
 
 export const deleteComment = (postId, commentId) => async dispatch => {
   try {
-    
     await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
-
+    console.log(commentId);
     dispatch({
       type: actionTypes.DELETE_COMMENT,
       payload: commentId

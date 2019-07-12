@@ -30,6 +30,8 @@ const AboutProfile = ({
   );
 };
 
-AboutProfile.propTypes = {};
+AboutProfile.propTypes = {
+  profile: PropTypes.object
+};
 
 export default AboutProfile;
